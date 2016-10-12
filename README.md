@@ -20,3 +20,5 @@ The code uses [transformations](https://msdn.microsoft.com/en-us/library/dd46532
 ## Deeper Dive 
 
 For a deeper explanation of the scenario this sample aims to address, and walkthrough of the code, please review this [blog post](http://blogs.msdn.com/devkeydet).  TODO: Insert working link.
+
+[@devkeydet](https://twitter.com/devkeydet)
