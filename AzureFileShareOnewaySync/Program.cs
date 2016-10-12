@@ -13,6 +13,8 @@ namespace AzureFileShareOnewaySync
     {
         static void Main(string[] args)
         {
+            //TODO: Identify more opportunities for parallelism and async calls and refactor accordingly.
+                        
             //Increase .NET HTP connections limit per https://github.com/Azure/azure-storage-net-data-movement#best-practice
             ServicePointManager.DefaultConnectionLimit = Environment.ProcessorCount * 8;
 
@@ -112,32 +114,6 @@ namespace AzureFileShareOnewaySync
                     }
                 }
             });
-            //foreach (var fileItem in filesAndDirectories)
-            //{
-            //    var cloudFile = fileItem as CloudFile;
-            //    if (cloudFile != null)
-            //    {
-            //        var sourceFile = new CloudFile(new Uri($"{sourceEndpoint}{fileItem.Uri.AbsolutePath}"), sourceStorageAccount.Credentials);
-            //        if (!sourceFile.Exists())
-            //        {
-            //            cloudFile.Delete();
-            //            Console.WriteLine($"Deleted: {cloudFile.Uri}");
-            //        }        
-            //    }
-            //    else
-            //    {
-            //        var cloudFileDirectory = fileItem as CloudFileDirectory;
-            //        if (cloudFileDirectory != null)
-            //        {                   
-            //            DeleteDestinationFilesAndDirectoriesNoLongerInSource(cloudFileDirectory, sourceStorageAccount);
-            //            if (cloudFileDirectory.ListFilesAndDirectories().Count() == 0)
-            //            {
-            //                cloudFileDirectory.Delete();
-            //                Console.WriteLine($"Deleted directory: {cloudFileDirectory.Uri}");
-            //            }
-            //        }
-            //    }                
-            //}
         }
     }
 }
