@@ -19,6 +19,6 @@ The code uses [transformations](https://msdn.microsoft.com/en-us/library/dd46532
 
 ## Deeper Dive 
 
-For a deeper explanation of the scenario this sample aims to address, and walkthrough of the code, please review this [blog post](http://blogs.msdn.com/devkeydet).  TODO: Insert working link.
+For a deeper explanation of the scenario this sample aims to address, and walkthrough of the code, please review this [blog post](https://blogs.msdn.microsoft.com/devkeydet/2016/10/12/manual-failover-of-azure-file-storage/).
 
 [@devkeydet](https://twitter.com/devkeydet)
