@@ -51,7 +51,7 @@ namespace AzureFileShareOnewaySync
             CloudStorageAccount destStorageAccount,
             CloudFileDirectory destDir)
         {
-            var transferContext = new TransferContext();
+            var transferContext = new DirectoryTransferContext();
 
             transferContext.FileFailed += (sender, args) => { Console.WriteLine(args.Exception.Message); };
 
@@ -62,14 +62,14 @@ namespace AzureFileShareOnewaySync
 
             transferContext.FileTransferred += (sender, args) =>
             {
-                Console.WriteLine($"Completed transferring {args.Destination}");
+                Console.WriteLine($"Completed transferring: {((CloudFile)args.Destination).Uri}");
             };
 
-            transferContext.OverwriteCallback = (source, destination) =>
+            transferContext.ShouldOverwriteCallback = (source, destination) =>
             {
                 // By default, files are not overwritten.  We want to overwrite files when the source has a newer file than the destination.
-                var sourceFile = new CloudFile(new Uri(source), sourceStorageAccount.Credentials);
-                var destFile = new CloudFile(new Uri(destination), destStorageAccount.Credentials);
+                var sourceFile = new CloudFile(new Uri(source.ToString()), sourceStorageAccount.Credentials);
+                var destFile = new CloudFile(new Uri(destination.ToString()), destStorageAccount.Credentials);
 
                 // Execute in parallel
                 var sourceFileFetchAttributesTask = Task.Run(() => sourceFile.FetchAttributes());
